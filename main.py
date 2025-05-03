@@ -1,1 +1,1 @@
-print('Hello, Playwright!')
+print('Hello, Playwright! ')
