@@ -22,7 +22,6 @@ def initialize_browser_state(playwright: Playwright) -> None:
     register_button.click()
 
     context.storage_state(path='browser-state.json')
-    yield
     chromium_browser.close()
 
 
@@ -31,4 +30,7 @@ def chromium_page_with_state(initialize_browser_state, playwright: Playwright) -
     chromium_browser = playwright.chromium.launch(headless=False)
     context = chromium_browser.new_context(storage_state='browser-state.json')
     page = context.new_page()
+
     yield page
+
+    chromium_browser.close()

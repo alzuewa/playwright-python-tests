@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright, expect
 
+
 with sync_playwright() as playwright:
     chromium = playwright.chromium.launch(headless=False)
     context = chromium.new_context()
