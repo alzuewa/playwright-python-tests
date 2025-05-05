@@ -19,7 +19,6 @@ with sync_playwright() as playwright:
 
     expect(register_button).to_be_enabled()
 
-
     register_button.click()
 
     dashboard_header = page.locator('[data-testid="dashboard-toolbar-title-text"]')
