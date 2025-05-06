@@ -21,7 +21,17 @@ class LoginPage(BasePage):
         self.password_field.fill(password)
         expect(self.password_field).to_have_value(password)
 
+    def click_login_button(self):
         self.login_button.click()
+
+    def fill_in_login_form_and_submit(self, email: str, password: str):
+        self.email_field.fill(email)
+        expect(self.email_field).to_have_value(email)
+
+        self.password_field.fill(password)
+        expect(self.password_field).to_have_value(password)
+
+        self.click_login_button()
 
     def click_registration_link(self):
         self.register_link.click()

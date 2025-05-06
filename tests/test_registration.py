@@ -9,4 +9,5 @@ def test_successful_registration(registration_page: RegistrationPage, dashboard_
         username='username',
         password='password'
     )
+    registration_page.click_register_button()
     dashboard_page.assert_dashboard_title_visible()
