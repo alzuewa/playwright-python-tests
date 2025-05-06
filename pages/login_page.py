@@ -23,7 +23,7 @@ class LoginPage(BasePage):
 
         self.login_button.click()
 
-    def click_register_link(self):
+    def click_registration_link(self):
         self.register_link.click()
 
     def assert_wrong_creds_alert_visible(self):
