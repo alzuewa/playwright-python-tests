@@ -1,5 +1,4 @@
 import pytest
-from playwright.sync_api import Page, expect
 
 from pages.courses_list_page import CoursesListPage
 from pages.create_course_page import CreateCoursePage
@@ -14,13 +13,15 @@ min_score = 10
 
 @pytest.mark.courses
 @pytest.mark.regression
-def test_empty_courses_list(chromium_page_with_state: Page):
-    chromium_page_with_state.goto('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses')
+def test_empty_courses_list(courses_list_page: CoursesListPage):
+    courses_list_page.open('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses')
 
-    courses_header = chromium_page_with_state.get_by_test_id('courses-list-toolbar-title-text')
-    expect(courses_header).to_be_visible()
-    empty_search_results_block = chromium_page_with_state.get_by_test_id('courses-list-empty-view-title-text')
-    expect(empty_search_results_block).to_be_visible()
+    courses_list_page.navbar.assert_visible(username='username')
+    courses_list_page.sidebar.assert_visible()
+
+    courses_list_page.assert_courses_page_title_visible()
+    courses_list_page.assert_create_course_button_visible()
+    courses_list_page.assert_empty_view_visible()
 
 
 @pytest.mark.courses
