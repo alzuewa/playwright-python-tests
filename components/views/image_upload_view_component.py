@@ -23,12 +23,12 @@ class ImageUploadViewComponent(BaseComponent):
 
         self.image_upload_info_icon = page.get_by_test_id(f'{self.identifier}-image-upload-widget-info-icon')
         self.image_upload_info_title = page.get_by_test_id(f'{self.identifier}-image-upload-widget-info-title-text')
-        self.image_upload_info_description = page.get_by_test_id(f'{self.identifier}-image-upload-widget-info-description-text')
+        self.image_upload_info_description = page.get_by_test_id(
+            f'{self.identifier}-image-upload-widget-info-description-text')
 
         self.upload_button = page.get_by_test_id(f'{self.identifier}-image-upload-widget-upload-button')
         self.remove_button = page.get_by_test_id(f'{self.identifier}-image-upload-widget-remove-button')
         self.upload_input = page.get_by_test_id(f'{self.identifier}-image-upload-widget-input')
-
 
     def assert_visible(self, is_image_uploaded: bool = False):
         expect(self.image_upload_info_icon).to_be_visible()

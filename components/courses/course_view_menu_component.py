@@ -21,4 +21,3 @@ class CourseViewMenuComponent(BaseComponent):
         self.menu_button.nth(index=index).click()
         expect(self.delete_menu_item).to_be_visible()
         self.delete_menu_item.click()
-        
