@@ -1,5 +1,6 @@
 from playwright.sync_api import Page, expect
 
+from components.authentication.login_form_component import LoginFormComponent
 from pages.base_page import BasePage
 
 
@@ -8,30 +9,13 @@ class LoginPage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
 
-        self.email_field = page.get_by_test_id('login-form-email-input').locator('input')
-        self.password_field = page.get_by_test_id('login-form-password-input').locator('input')
+        self.login_form = LoginFormComponent(page=page)
         self.login_button = page.get_by_test_id('login-page-login-button')
         self.register_link = page.get_by_test_id('login-page-registration-link')
         self.wrong_creds_alert = page.get_by_test_id('login-page-wrong-email-or-password-alert')
 
-    def fill_in_login_form(self, email: str, password: str):
-        self.email_field.fill(email)
-        expect(self.email_field).to_have_value(email)
-
-        self.password_field.fill(password)
-        expect(self.password_field).to_have_value(password)
-
     def click_login_button(self):
         self.login_button.click()
-
-    def fill_in_login_form_and_submit(self, email: str, password: str):
-        self.email_field.fill(email)
-        expect(self.email_field).to_have_value(email)
-
-        self.password_field.fill(password)
-        expect(self.password_field).to_have_value(password)
-
-        self.click_login_button()
 
     def click_registration_link(self):
         self.register_link.click()
