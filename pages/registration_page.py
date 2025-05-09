@@ -1,6 +1,8 @@
 from playwright.sync_api import Page
 
 from components.authentication.registration_form_component import RegistrationFormComponent
+from elements.button import Button
+from elements.link import Link
 from pages.base_page import BasePage
 
 
@@ -10,8 +12,8 @@ class RegistrationPage(BasePage):
         super().__init__(page=page)
 
         self.registration_form = RegistrationFormComponent(page=page)
-        self.register_button = page.get_by_test_id('registration-page-registration-button')
-        self.login_link = page.get_by_test_id('registration-page-login-link')
+        self.register_button = Button(page, 'registration-page-registration-button', 'Registration')
+        self.login_link = Link(page, 'registration-page-login-link', 'Login')
 
     def click_register_button(self):
         self.register_button.click()

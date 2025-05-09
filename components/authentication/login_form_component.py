@@ -1,6 +1,7 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
+from elements.input import Input
 
 
 class LoginFormComponent(BaseComponent):
@@ -8,18 +9,17 @@ class LoginFormComponent(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page=page)
 
-        self.email_field = page.get_by_test_id('login-form-email-input').locator('input')
-        self.password_field = page.get_by_test_id('login-form-password-input').locator('input')
+        self.email_field = Input(page, 'login-form-email-input', 'Email')
+        self.password_field = Input(page, 'login-form-password-input', 'Password')
 
     def fill_in_form(self, email: str, password: str):
-        self.email_field.fill(email)
-        expect(self.email_field).to_have_value(email)
-
-        self.password_field.fill(password)
-        expect(self.password_field).to_have_value(password)
+        self.email_field.fill(value=email)
+        self.email_field.assert_have_value(value=email)
+        self.password_field.fill(value=password)
+        self.password_field.assert_have_value(value=password)
 
     def assert_visible(self, email: str, password: str):
-        expect(self.email_field).to_be_visible()
-        expect(self.email_field).to_have_value(email)
-        expect(self.password_field).to_be_visible()
-        expect(self.password_field).to_have_value(password)
+        self.email_field.assert_visible()
+        self.email_field.assert_have_value(value=email)
+        self.password_field.assert_visible()
+        self.password_field.assert_have_value(value=password)

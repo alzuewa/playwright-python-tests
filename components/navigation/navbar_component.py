@@ -1,6 +1,7 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
+from elements.text import Text
 
 
 class NavbarComponent(BaseComponent):
@@ -8,12 +9,12 @@ class NavbarComponent(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page=page)
 
-        self.app_title = page.get_by_test_id('navigation-navbar-app-title-text')
-        self.welcome_title = page.get_by_test_id('navigation-navbar-welcome-title-text')
+        self.app_title = Text(page, 'navigation-navbar-app-title-text', 'App title')
+        self.welcome_title = Text(page, 'navigation-navbar-welcome-title-text', 'Welcome text')
 
     def assert_visible(self, username: str):
-        expect(self.app_title).to_be_visible()
-        expect(self.app_title).to_have_text('UI Course')
+        self.app_title.assert_visible()
+        self.app_title.assert_have_text(text='UI Course')
 
-        expect(self.welcome_title).to_be_visible()
-        expect(self.welcome_title).to_have_text(f'Welcome, {username}!')
+        self.welcome_title.assert_visible()
+        self.welcome_title.assert_have_text(text=f'Welcome, {username}!')

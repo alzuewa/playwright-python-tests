@@ -1,9 +1,14 @@
 from pathlib import Path
 
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
 from components.views.empty_view_component import EmptyViewComponent
+from elements.button import Button
+from elements.file_input import FileInput
+from elements.icon import Icon
+from elements.image import Image
+from elements.text import Text
 
 
 class ImageUploadViewComponent(BaseComponent):
@@ -12,32 +17,31 @@ class ImageUploadViewComponent(BaseComponent):
         super().__init__(page=page)
         self.identifier = identifier
 
-        self.preview_empty_view = EmptyViewComponent(
-            page=page,
-            identifier=self.identifier
+        self.preview_empty_view = EmptyViewComponent(page=page, identifier=self.identifier)
+        self.preview_image = Image(page, '{identifier}-image-upload-widget-preview-image', 'Image preview')
+        self.image_upload_info_icon = Icon(page, '{identifier}-image-upload-widget-info-icon', 'Upload icon')
+        self.image_upload_info_title = Text(page, '{identifier}-image-upload-widget-info-title-text', 'Upload title')
+        self.image_upload_info_description = Text(
+            page, '{identifier}-image-upload-widget-info-description-text', 'Upload description'
         )
-
-        self.preview_image = page.get_by_test_id(f'{self.identifier}-image-upload-widget-preview-image')
-
-        self.image_upload_info_icon = page.get_by_test_id(f'{self.identifier}-image-upload-widget-info-icon')
-        self.image_upload_info_title = page.get_by_test_id(f'{self.identifier}-image-upload-widget-info-title-text')
-        self.image_upload_info_description = page.get_by_test_id(
-            f'{self.identifier}-image-upload-widget-info-description-text')
-
-        self.upload_button = page.get_by_test_id(f'{self.identifier}-image-upload-widget-upload-button')
-        self.remove_button = page.get_by_test_id(f'{self.identifier}-image-upload-widget-remove-button')
-        self.upload_input = page.get_by_test_id(f'{self.identifier}-image-upload-widget-input')
+        self.upload_button = Button(page, '{identifier}-image-upload-widget-upload-button', 'Upload button')
+        self.remove_button = Button(page, '{identifier}-image-upload-widget-remove-button', 'Remove button')
+        self.upload_input = FileInput(page, '{identifier}-image-upload-widget-input', 'Upload input')
 
     def assert_visible(self, is_image_uploaded: bool = False):
-        expect(self.image_upload_info_icon).to_be_visible()
-        expect(self.image_upload_info_title).to_be_visible()
-        expect(self.image_upload_info_title).to_have_text('Tap on "Upload image" button to select file')
-        expect(self.image_upload_info_description).to_be_visible()
-        expect(self.image_upload_info_description).to_have_text('Recommended file size 540X300')
-        expect(self.upload_button).to_be_visible()
+        self.image_upload_info_icon.assert_visible(identifier=self.identifier)
+        self.image_upload_info_title.assert_visible(identifier=self.identifier)
+        self.image_upload_info_title.assert_have_text(
+            text='Tap on "Upload image" button to select file', identifier=self.identifier
+        )
+        self.image_upload_info_description.assert_visible(identifier=self.identifier)
+        self.image_upload_info_description.assert_have_text(
+            text='Recommended file size 540X300', identifier=self.identifier
+        )
+        self.upload_button.assert_visible(identifier=self.identifier)
         if is_image_uploaded:
-            expect(self.preview_image).to_be_visible()
-            expect(self.remove_button).to_be_visible()
+            self.preview_image.assert_visible(identifier=self.identifier)
+            self.remove_button.assert_visible(identifier=self.identifier)
         else:
             self.preview_empty_view.assert_visible(
                 title='No image selected',
@@ -45,7 +49,7 @@ class ImageUploadViewComponent(BaseComponent):
             )
 
     def click_remove_image_button(self):
-        self.remove_button.click()
+        self.remove_button.click(identifier=self.identifier)
 
     def upload_preview_image(self, file_path: str | Path):
-        self.upload_input.set_input_files(file_path)
+        self.upload_input.set_input_files(file=file_path, identifier=self.identifier)

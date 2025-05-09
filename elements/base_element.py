@@ -9,7 +9,7 @@ class BaseElement:
         self.name = name
 
     def get_locator(self, **kwargs) -> Locator:
-        locator = self.locator_pattern.format(kwargs)
+        locator = self.locator_pattern.format(**kwargs)
         return self.page.get_by_test_id(locator)  # use `locator` or other search strategy if needed
 
     def click(self, **kwargs):

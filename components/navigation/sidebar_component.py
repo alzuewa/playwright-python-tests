@@ -11,14 +11,14 @@ class SidebarComponent(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page=page)
 
-        self.dashboard_list_item = SidebarListItemComponent(page=page, identifier='dashboard', item_name='Dashboard')
-        self.courses_list_item = SidebarListItemComponent(page=page, identifier='courses', item_name='Courses')
-        self.logout_list_item = SidebarListItemComponent(page=page, identifier='logout', item_name='Logout')
+        self.dashboard_list_item = SidebarListItemComponent(page=page, identifier='dashboard')
+        self.courses_list_item = SidebarListItemComponent(page=page, identifier='courses')
+        self.logout_list_item = SidebarListItemComponent(page=page, identifier='logout')
 
     def assert_visible(self):
-        self.dashboard_list_item.assert_visible()
-        self.courses_list_item.assert_visible()
-        self.logout_list_item.assert_visible()
+        self.dashboard_list_item.assert_visible(item_title='Dashboard')
+        self.courses_list_item.assert_visible(item_title='Courses')
+        self.logout_list_item.assert_visible(item_title='Logout')
 
     def click_logout(self):
         self.logout_list_item.navigate(expected_url=re.compile(r'.*/#/auth/login'))
