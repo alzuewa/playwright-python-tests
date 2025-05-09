@@ -27,8 +27,7 @@ def test_empty_courses_list(courses_list_page: CoursesListPage):
 @pytest.mark.regression
 def test_create_course(courses_list_page: CoursesListPage, create_course_page: CreateCoursePage):
     create_course_page.open('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create')
-    create_course_page.toolbar.assert_visible()
-    create_course_page.toolbar.assert_create_course_button_disabled()
+    create_course_page.toolbar.assert_visible(is_create_course_disabled=True)
     create_course_page.image_upload_view.assert_visible(is_image_uploaded=False)
     create_course_page.course_content_form.assert_visible(
         title='',
@@ -51,7 +50,7 @@ def test_create_course(courses_list_page: CoursesListPage, create_course_page: C
         max_score=max_score,
         min_score=min_score
     )
-    create_course_page.toolbar.click_save_course_button()
+    create_course_page.toolbar.click_create_course_button()
     courses_list_page.toolbar.assert_visible()
     courses_list_page.course_view.assert_visible(
         index=0,

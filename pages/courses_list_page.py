@@ -15,7 +15,7 @@ class CoursesListPage(BasePage):
 
         self.navbar = NavbarComponent(page=page)
         self.sidebar = SidebarComponent(page=page)
-        self.toolbar = CoursesListToolbarViewComponent(page=page, identifier='courses-list', title_text='Courses')
+        self.toolbar = CoursesListToolbarViewComponent(page=page, identifier='courses-list')
         self.course_view = CourseViewComponent(page=page)
         self.courses_empty_view = EmptyViewComponent(
             page=page,
