@@ -53,7 +53,7 @@ def test_create_course(courses_list_page: CoursesListPage, create_course_page: C
     courses_list_page.toolbar.assert_visible()
     courses_list_page.course_view.assert_visible(
         index=0,
-        title=title,
+        title_text=title,
         max_score=max_score,
         min_score=min_score,
         estimated_time=estimated_time
