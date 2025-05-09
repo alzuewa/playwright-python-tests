@@ -14,4 +14,4 @@ def test_successful_registration(registration_page: RegistrationPage, dashboard_
     registration_page.registration_form.fill_in_form(email=email, username=username, password=password)
     registration_page.registration_form.assert_visible(email=email, username=username, password=password)
     registration_page.click_register_button()
-    dashboard_page.assert_dashboard_title_visible()
+    dashboard_page.toolbar.assert_visible()
