@@ -3,10 +3,10 @@ import pytest
 from pages.dashboard_page import DashboardPage
 from pages.registration_page import RegistrationPage
 
+email = 'user.name@gmail.com'
+username = 'username'
+password = 'password'
 
-email='user.name@gmail.com'
-username='username'
-password='password'
 
 @pytest.mark.regression
 def test_successful_registration(registration_page: RegistrationPage, dashboard_page: DashboardPage):
