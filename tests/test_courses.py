@@ -30,7 +30,7 @@ def test_create_course(courses_list_page: CoursesListPage, create_course_page: C
     create_course_page.toolbar.assert_visible()
     create_course_page.toolbar.assert_create_course_button_disabled()
     create_course_page.image_upload_view.assert_visible(is_image_uploaded=False)
-    create_course_page.assert_create_course_form_visible(
+    create_course_page.course_content_form.assert_visible(
         title='',
         estimated_time='',
         description='',
@@ -44,7 +44,7 @@ def test_create_course(courses_list_page: CoursesListPage, create_course_page: C
         file_path=get_resource_path(local_file_path='testdata/files/image.jpg')
     )
     create_course_page.image_upload_view.assert_visible(is_image_uploaded=True)
-    create_course_page.fill_in_create_course_form(
+    create_course_page.course_content_form.fill_form(
         title=title,
         estimated_time=estimated_time,
         description=description,
