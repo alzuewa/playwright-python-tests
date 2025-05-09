@@ -14,9 +14,7 @@ class ImageUploadViewComponent(BaseComponent):
 
         self.preview_empty_view = EmptyViewComponent(
             page=page,
-            identifier=self.identifier,
-            title_text='No image selected',
-            description_text='Preview of selected image will be displayed here'
+            identifier=self.identifier
         )
 
         self.preview_image = page.get_by_test_id(f'{self.identifier}-image-upload-widget-preview-image')
@@ -41,7 +39,10 @@ class ImageUploadViewComponent(BaseComponent):
             expect(self.preview_image).to_be_visible()
             expect(self.remove_button).to_be_visible()
         else:
-            self.preview_empty_view.assert_visible()
+            self.preview_empty_view.assert_visible(
+                title='No image selected',
+                description='Preview of selected image will be displayed here'
+            )
 
     def click_remove_image_button(self):
         self.remove_button.click()

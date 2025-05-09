@@ -23,10 +23,11 @@ class CreateCoursePage(BasePage):
         self.toolbar = CreateCourseToolbarViewComponent(page=page, identifier='create-course')
         self.exercises_empty_view = EmptyViewComponent(
             page=page,
-            identifier='create-course-exercises',
-            title_text='There is no exercises',
-            description_text='Click on "Create exercise" button to create new exercise'
+            identifier='create-course-exercises'
         )
 
     def assert_exercises_empty_view_visible(self):
-        self.exercises_empty_view.assert_visible()
+        self.exercises_empty_view.assert_visible(
+            title='There is no exercises',
+            description='Click on "Create exercise" button to create new exercise'
+        )

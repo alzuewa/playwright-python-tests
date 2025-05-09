@@ -19,10 +19,11 @@ class CoursesListPage(BasePage):
         self.course_view = CourseViewComponent(page=page)
         self.courses_empty_view = EmptyViewComponent(
             page=page,
-            identifier='courses-list',
-            title_text='There is no results',
-            description_text='Results from the load test pipeline will be displayed here'
+            identifier='courses-list'
         )
 
     def assert_empty_view_visible(self):
-        self.courses_empty_view.assert_visible()
+        self.courses_empty_view.assert_visible(
+            title='There is no results',
+            description='Results from the load test pipeline will be displayed here'
+        )
