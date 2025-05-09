@@ -36,8 +36,7 @@ def test_create_course(courses_list_page: CoursesListPage, create_course_page: C
         max_score=0,
         min_score=0
     )
-    create_course_page.assert_exercises_block_title_visible()
-    create_course_page.assert_create_exercise_button_visible()
+    create_course_page.exercise_toolbar.assert_visible()
     create_course_page.assert_exercises_empty_view_visible()
     create_course_page.image_upload_view.upload_preview_image(
         file_path=get_resource_path(local_file_path='testdata/files/image.jpg')

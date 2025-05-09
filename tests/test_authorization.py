@@ -3,6 +3,7 @@ import pytest
 from pages.login_page import LoginPage
 
 
+@pytest.mark.regression
 @pytest.mark.parametrize(
     'email, password', [
         ('user.name@gmail.com', 'password'),

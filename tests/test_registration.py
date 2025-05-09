@@ -1,3 +1,5 @@
+import pytest
+
 from pages.dashboard_page import DashboardPage
 from pages.registration_page import RegistrationPage
 
@@ -6,6 +8,7 @@ email='user.name@gmail.com'
 username='username'
 password='password'
 
+@pytest.mark.regression
 def test_successful_registration(registration_page: RegistrationPage, dashboard_page: DashboardPage):
     registration_page.open('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration')
     registration_page.registration_form.fill_in_form(email=email, username=username, password=password)
