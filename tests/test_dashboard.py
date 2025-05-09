@@ -12,7 +12,7 @@ def test_dashboard_displaying(dashboard_page_authorized_state: DashboardPage):
     dashboard_page_authorized_state.sidebar.assert_visible()
 
     dashboard_page_authorized_state.toolbar.assert_visible()
-    dashboard_page_authorized_state.assert_students_chart_visible()
-    dashboard_page_authorized_state.assert_activities_chart_visible()
-    dashboard_page_authorized_state.assert_courses_chart_visible()
-    dashboard_page_authorized_state.assert_scores_chart_visible()
+    dashboard_page_authorized_state.students_chart.assert_visible()
+    dashboard_page_authorized_state.activities_chart.assert_visible()
+    dashboard_page_authorized_state.courses_chart.assert_visible()
+    dashboard_page_authorized_state.scores_chart.assert_visible()
