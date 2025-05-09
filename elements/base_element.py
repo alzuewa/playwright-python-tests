@@ -8,22 +8,22 @@ class BaseElement:
         self.locator_pattern = locator_pattern
         self.name = name
 
-    def get_locator(self, **kwargs) -> Locator:
+    def get_locator(self, nth: int = 0, **kwargs) -> Locator:
         locator = self.locator_pattern.format(**kwargs)
-        return self.page.get_by_test_id(locator)  # use `locator` or other search strategy if needed
+        return self.page.get_by_test_id(locator).nth(nth)  # use `locator` or other search strategy if needed
 
-    def click(self, **kwargs):
-        locator = self.get_locator(**kwargs)
+    def click(self, nth: int = 0, **kwargs):
+        locator = self.get_locator(nth, **kwargs)
         locator.click()
 
-    def assert_visible(self, **kwargs):
-        locator = self.get_locator(**kwargs)
+    def assert_visible(self, nth: int = 0, **kwargs):
+        locator = self.get_locator(nth, **kwargs)
         expect(locator).to_be_visible()
 
-    def assert_have_text(self, text: str, **kwargs):
-        locator = self.get_locator(**kwargs)
+    def assert_have_text(self, text: str, nth: int = 0, **kwargs):
+        locator = self.get_locator(nth, **kwargs)
         expect(locator).to_have_text(text)
 
-    def assert_have_value(self, value: str, **kwargs):
-        locator = self.get_locator(**kwargs)
+    def assert_have_value(self, value: str, nth: int = 0, **kwargs):
+        locator = self.get_locator(nth, **kwargs)
         expect(locator).to_have_text(value)
