@@ -1,5 +1,6 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
+from components.charts.chart_view_component import ChartViewComponent
 from components.dashboard.dashboard_toolbar_view_component import DashboardToolbarViewComponent
 from components.navigation.navbar_component import NavbarComponent
 from components.navigation.sidebar_component import SidebarComponent
@@ -14,31 +15,7 @@ class DashboardPage(BasePage):
         self.navbar = NavbarComponent(page=page)
         self.sidebar = SidebarComponent(page=page)
         self.toolbar = DashboardToolbarViewComponent(page=page)
-        self.students_chart_title = page.get_by_test_id('students-widget-title-text')
-        self.students_chart = page.get_by_test_id('students-bar-chart')
-        self.activities_chart_title = page.get_by_test_id('activities-widget-title-text')
-        self.activities_chart = page.get_by_test_id('activities-line-chart')
-        self.courses_chart_title = page.get_by_test_id('courses-widget-title-text')
-        self.courses_chart = page.get_by_test_id('courses-pie-chart')
-        self.scores_chart_title = page.get_by_test_id('scores-widget-title-text')
-        self.scores_chart = page.get_by_test_id('scores-scatter-chart')
-
-    def assert_students_chart_visible(self):
-        expect(self.students_chart).to_be_visible()
-        expect(self.students_chart_title).to_be_visible()
-        expect(self.students_chart_title).to_have_text('Students')
-
-    def assert_activities_chart_visible(self):
-        expect(self.activities_chart).to_be_visible()
-        expect(self.activities_chart_title).to_be_visible()
-        expect(self.activities_chart_title).to_have_text('Activities')
-
-    def assert_courses_chart_visible(self):
-        expect(self.courses_chart).to_be_visible()
-        expect(self.courses_chart_title).to_be_visible()
-        expect(self.courses_chart_title).to_have_text('Courses')
-
-    def assert_scores_chart_visible(self):
-        expect(self.scores_chart).to_be_visible()
-        expect(self.scores_chart_title).to_be_visible()
-        expect(self.scores_chart_title).to_have_text('Scores')
+        self.students_chart = ChartViewComponent(page=page, identifier='students', char_type='bar', chart_name='Students')
+        self.activities_chart = ChartViewComponent(page=page, identifier='activities', char_type='line', chart_name='Activities')
+        self.courses_chart = ChartViewComponent(page=page, identifier='courses', char_type='pie', chart_name='Courses')
+        self.scores_chart = ChartViewComponent(page=page, identifier='scores', char_type='scatter', chart_name='Scores')
