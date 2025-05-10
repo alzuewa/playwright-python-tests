@@ -13,7 +13,7 @@ class RegistrationFormComponent(BaseComponent):
         self.username_field = Input(page, 'registration-form-username-input', 'Username')
         self.password_field = Input(page, 'registration-form-password-input', 'Password')
 
-    def fill_in_form(self, email: str, username: str, password: str):
+    def fill(self, email: str, username: str, password: str):
         self.email_field.fill(value=email)
         self.email_field.assert_have_value(value=email)
         self.username_field.fill(value=username)

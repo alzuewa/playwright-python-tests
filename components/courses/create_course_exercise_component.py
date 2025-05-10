@@ -26,7 +26,7 @@ class CreateCourseExerciseComponent(BaseComponent):
     def click_delete_button(self, index: int):
         self.delete_exercise_button.click(index=index)
 
-    def fill_in_exercise_form(self, index: int, title: str, description: str):
+    def fill(self, index: int, title: str, description: str):
         self.subtitle_input.fill(value=title, index=index)
         self.subtitle_input.assert_have_value(value=title, index=index)
 
