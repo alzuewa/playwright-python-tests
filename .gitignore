@@ -4,3 +4,5 @@
 browser-state.json
 
 __pycache__/
+
+allure-results/
