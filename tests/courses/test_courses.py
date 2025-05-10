@@ -1,10 +1,16 @@
 import re
 from dataclasses import dataclass
 
+import allure
 import pytest
+from allure_commons.types import Severity
 
 from pages.courses.courses_list_page import CoursesListPage
 from pages.courses.create_course_page import CreateCoursePage
+from utils.allure.epics import AllureEpic
+from utils.allure.features import AllureFeature
+from utils.allure.stories import AllureStory
+from utils.allure.tags import AllureTag
 from utils.resource_path_getter import get_resource_path
 
 
@@ -25,8 +31,17 @@ first_data = CourseData(
 
 @pytest.mark.regression
 @pytest.mark.courses
+@allure.tag(AllureTag.REGRESSION, AllureTag.COURSES)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.COURSES)
+@allure.story(AllureStory.COURSES)
+@allure.parent_suite(AllureEpic.LMS)
+@allure.suite(AllureFeature.COURSES)
+@allure.sub_suite(AllureStory.COURSES)
 class TestCourses:
 
+    @allure.title('Check displaying of empty courses list')
+    @allure.severity(Severity.NORMAL)
     def test_empty_courses_list(self, courses_list_page: CoursesListPage):
         courses_list_page.open('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses')
 
@@ -36,6 +51,8 @@ class TestCourses:
         courses_list_page.toolbar.assert_visible()
         courses_list_page.assert_empty_view_visible()
 
+    @allure.title('Create course')
+    @allure.severity(Severity.CRITICAL)
     def test_create_course(self, courses_list_page: CoursesListPage, create_course_page: CreateCoursePage):
         create_course_page.open('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create')
         create_course_page.toolbar.assert_visible(is_create_course_disabled=True)
@@ -70,6 +87,8 @@ class TestCourses:
             min_score=first_data.min_score
         )
 
+    @allure.title('Edit course')
+    @allure.severity(Severity.CRITICAL)
     def test_edit_course(
             self,
             courses_list_page: CoursesListPage,
