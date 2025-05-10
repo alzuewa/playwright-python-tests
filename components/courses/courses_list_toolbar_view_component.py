@@ -1,8 +1,10 @@
 import re
 
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
+from elements.button import Button
+from elements.text import Text
 
 
 class CoursesListToolbarViewComponent(BaseComponent):
@@ -11,13 +13,13 @@ class CoursesListToolbarViewComponent(BaseComponent):
         super().__init__(page=page)
         self.identifier = identifier
 
-        self.title = page.get_by_test_id(f'{self.identifier}-toolbar-title-text')
-        self.create_course_button = page.get_by_test_id(f'{self.identifier}-toolbar-create-course-button')
+        self.title = Text(page, f'{identifier}-toolbar-title-text', 'Title')
+        self.create_course_button = Button(page, f'{identifier}-toolbar-create-course-button', 'Create course')
 
     def assert_visible(self):
-        expect(self.title).to_be_visible()
-        expect(self.title).to_have_text('Courses')
-        expect(self.create_course_button).to_be_visible()
+        self.title.assert_visible()
+        self.title.assert_have_text(text='Courses')
+        self.create_course_button.assert_visible()
 
     def click_create_course_button(self):
         self.create_course_button.click()

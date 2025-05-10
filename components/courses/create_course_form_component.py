@@ -1,6 +1,8 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
+from elements.input import Input
+from elements.textarea import Textarea
 
 
 class CreateCourseFormComponent(BaseComponent):
@@ -8,42 +10,40 @@ class CreateCourseFormComponent(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page=page)
 
-        self.title_input = page.get_by_test_id('create-course-form-title-input').locator('input')
-        self.estimated_time_input = page.get_by_test_id('create-course-form-estimated-time-input').locator(
-            'input')
-        self.description_input = page.get_by_test_id('create-course-form-description-input').locator(
-            'textarea').first
-        self.max_score_input = page.get_by_test_id('create-course-form-max-score-input').locator('input')
-        self.min_score_input = page.get_by_test_id('create-course-form-min-score-input').locator('input')
+        self.title_input = Input(page, 'create-course-form-title-input', 'Title')
+        self.estimated_time_input = Input(page, 'create-course-form-estimated-time-input', 'Estimated time')
+        self.description_input = Textarea(page, 'create-course-form-description-input', 'Description')
+        self.max_score_input = Input(page, 'create-course-form-max-score-input', 'Max score')
+        self.min_score_input = Input(page, 'create-course-form-min-score-input', 'Min score')
 
     def fill_form(self, title: str, estimated_time: str, description: str, max_score: int, min_score: int):
-        self.title_input.fill(title)
-        expect(self.title_input).to_have_value(title)
+        self.title_input.fill(value=title)
+        self.title_input.assert_have_value(value=title)
 
-        self.estimated_time_input.fill(estimated_time)
-        expect(self.estimated_time_input).to_have_value(estimated_time)
+        self.estimated_time_input.fill(value=estimated_time)
+        self.estimated_time_input.assert_have_value(value=estimated_time)
 
-        self.description_input.fill(description)
-        expect(self.description_input).to_have_value(description)
+        self.description_input.fill(value=description)
+        self.description_input.assert_have_value(description)
 
-        self.max_score_input.fill(str(max_score))
-        expect(self.max_score_input).to_have_value(str(max_score))
+        self.max_score_input.fill(value=str(max_score))
+        self.max_score_input.assert_have_value(value=str(max_score))
 
-        self.min_score_input.fill(str(min_score))
-        expect(self.min_score_input).to_have_value(str(min_score))
+        self.min_score_input.fill(value=str(min_score))
+        self.min_score_input.assert_have_value(value=str(min_score))
 
     def assert_visible(self, title: str, estimated_time: str, description: str, max_score: int, min_score: int):
-        expect(self.title_input).to_be_visible()
-        expect(self.title_input).to_have_value(title)
+        self.title_input.assert_visible()
+        self.title_input.assert_have_value(value=title)
 
-        expect(self.estimated_time_input).to_be_visible()
-        expect(self.estimated_time_input).to_have_value(estimated_time)
+        self.estimated_time_input.assert_visible()
+        self.estimated_time_input.assert_have_value(value=estimated_time)
 
-        expect(self.description_input).to_be_visible()
-        expect(self.description_input).to_have_value(description)
+        self.description_input.assert_visible()
+        self.description_input.assert_have_value(value=description)
 
-        expect(self.max_score_input).to_be_visible()
-        expect(self.max_score_input).to_have_value(str(max_score))
+        self.max_score_input.assert_visible()
+        self.max_score_input.assert_have_value(value=str(max_score))
 
-        expect(self.min_score_input).to_be_visible()
-        expect(self.min_score_input).to_have_value(str(min_score))
+        self.min_score_input.assert_visible()
+        self.min_score_input.assert_have_value(value=str(min_score))
