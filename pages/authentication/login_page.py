@@ -1,3 +1,5 @@
+import re
+
 from playwright.sync_api import Page
 
 from components.authentication.login_form_component import LoginFormComponent
@@ -24,6 +26,7 @@ class LoginPage(BasePage):
 
     def click_registration_link(self):
         self.register_link.click()
+        self.check_current_url(expected_url=re.compile('.*/#/auth/registration'))
 
     def assert_wrong_creds_alert_visible(self):
         self.wrong_creds_alert.assert_visible()
