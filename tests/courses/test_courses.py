@@ -10,6 +10,7 @@ from pages.courses.create_course_page import CreateCoursePage
 from utils.allure.epics import AllureEpic
 from utils.allure.features import AllureFeature
 from utils.allure.stories import AllureStory
+from utils.allure.suites import AllureParentSuite, AllureSuite, AllureSubSuite
 from utils.allure.tags import AllureTag
 from utils.resource_path_getter import get_resource_path
 
@@ -35,9 +36,9 @@ first_data = CourseData(
 @allure.epic(AllureEpic.LMS)
 @allure.feature(AllureFeature.COURSES)
 @allure.story(AllureStory.COURSES)
-@allure.parent_suite(AllureEpic.LMS)
-@allure.suite(AllureFeature.COURSES)
-@allure.sub_suite(AllureStory.COURSES)
+@allure.parent_suite(AllureParentSuite.LMS)
+@allure.suite(AllureSuite.COURSES)
+@allure.sub_suite(AllureSubSuite.COURSES)
 class TestCourses:
 
     @allure.title('Check displaying of empty courses list')

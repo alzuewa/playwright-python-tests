@@ -6,6 +6,7 @@ from pages.dashboard.dashboard_page import DashboardPage
 from utils.allure.epics import AllureEpic
 from utils.allure.features import AllureFeature
 from utils.allure.stories import AllureStory
+from utils.allure.suites import AllureParentSuite, AllureSuite, AllureSubSuite
 from utils.allure.tags import AllureTag
 
 
@@ -15,9 +16,9 @@ from utils.allure.tags import AllureTag
 @allure.epic(AllureEpic.LMS)
 @allure.feature(AllureFeature.DASHBOARD)
 @allure.story(AllureStory.DASHBOARD)
-@allure.parent_suite(AllureEpic.LMS)
-@allure.suite(AllureFeature.DASHBOARD)
-@allure.sub_suite(AllureStory.DASHBOARD)
+@allure.parent_suite(AllureParentSuite.LMS)
+@allure.suite(AllureSuite.DASHBOARD)
+@allure.sub_suite(AllureSubSuite.DASHBOARD)
 class TestDashboard:
 
     @allure.title('Check displaying of dashboard page')

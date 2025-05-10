@@ -7,6 +7,7 @@ from pages.dashboard.dashboard_page import DashboardPage
 from utils.allure.epics import AllureEpic
 from utils.allure.features import AllureFeature
 from utils.allure.stories import AllureStory
+from utils.allure.suites import AllureParentSuite, AllureSuite, AllureSubSuite
 from utils.allure.tags import AllureTag
 
 email = 'user.name@gmail.com'
@@ -20,9 +21,9 @@ password = 'password'
 @allure.epic(AllureEpic.LMS)
 @allure.feature(AllureFeature.AUTHENTICATION)
 @allure.story(AllureStory.REGISTRATION)
-@allure.parent_suite(AllureEpic.LMS)
-@allure.suite(AllureFeature.AUTHENTICATION)
-@allure.sub_suite(AllureStory.REGISTRATION)
+@allure.parent_suite(AllureParentSuite.LMS)
+@allure.suite(AllureSuite.AUTHENTICATION)
+@allure.sub_suite(AllureSubSuite.REGISTRATION)
 class TestRegistration:
 
     @allure.title('Registration with correct email, username and password')
