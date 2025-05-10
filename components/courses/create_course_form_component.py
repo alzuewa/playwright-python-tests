@@ -16,9 +16,9 @@ class CreateCourseFormComponent(BaseComponent):
         self.max_score_input = Input(page, 'create-course-form-max-score-input', 'Max score')
         self.min_score_input = Input(page, 'create-course-form-min-score-input', 'Min score')
 
-    def fill_form(self, title: str, estimated_time: str, description: str, max_score: int, min_score: int):
-        self.title_input.fill(value=title)
-        self.title_input.assert_have_value(value=title)
+    def fill(self, title_text: str, estimated_time: str, description: str, max_score: int, min_score: int):
+        self.title_input.fill(value=title_text)
+        self.title_input.assert_have_value(value=title_text)
 
         self.estimated_time_input.fill(value=estimated_time)
         self.estimated_time_input.assert_have_value(value=estimated_time)
@@ -32,9 +32,9 @@ class CreateCourseFormComponent(BaseComponent):
         self.min_score_input.fill(value=str(min_score))
         self.min_score_input.assert_have_value(value=str(min_score))
 
-    def assert_visible(self, title: str, estimated_time: str, description: str, max_score: int, min_score: int):
+    def assert_visible(self, title_text: str, estimated_time: str, description: str, max_score: int, min_score: int):
         self.title_input.assert_visible()
-        self.title_input.assert_have_value(value=title)
+        self.title_input.assert_have_value(value=title_text)
 
         self.estimated_time_input.assert_visible()
         self.estimated_time_input.assert_have_value(value=estimated_time)
