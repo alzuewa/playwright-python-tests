@@ -9,15 +9,14 @@ class EmptyViewComponent(BaseComponent):
 
     def __init__(self, page: Page, identifier: str):
         super().__init__(page=page)
-        self.identifier = identifier
 
-        self.icon = Icon(page, '{identifier}-empty-view-icon', 'Icon')
-        self.title = Text(page, '{identifier}-empty-view-title-text', 'Title')
-        self.description = Text(page, '{identifier}-empty-view-description-text', 'Description')
+        self.icon = Icon(page, f'{identifier}-empty-view-icon', 'Icon')
+        self.title = Text(page, f'{identifier}-empty-view-title-text', 'Title')
+        self.description = Text(page, f'{identifier}-empty-view-description-text', 'Description')
 
     def assert_visible(self, title: str, description: str):
-        self.icon.assert_visible(identifier=self.identifier)
-        self.title.assert_visible(identifier=self.identifier)
-        self.title.assert_have_text(text=title, identifier=self.identifier)
-        self.description.assert_visible(identifier=self.identifier)
-        self.description.assert_have_text(text=description, identifier=self.identifier)
+        self.icon.assert_visible()
+        self.title.assert_visible()
+        self.title.assert_have_text(text=title)
+        self.description.assert_visible()
+        self.description.assert_have_text(text=description)
