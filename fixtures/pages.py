@@ -34,5 +34,10 @@ def create_course_page(chromium_page_with_state: Page) -> CreateCoursePage:
 
 
 @pytest.fixture
-def dashboard_page_authorized_state(chromium_page_with_state: Page) -> DashboardPage:
+def dashboard_page_authorized(chromium_page_with_state: Page) -> DashboardPage:
     return DashboardPage(page=chromium_page_with_state)
+
+
+@pytest.fixture
+def create_course_page_authorized(chromium_page_with_state: Page) -> CreateCoursePage:
+    return CreateCoursePage(page=chromium_page_with_state)
