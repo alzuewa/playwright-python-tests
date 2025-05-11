@@ -1,5 +1,6 @@
 import re
 
+import allure
 from playwright.sync_api import Page
 
 from components.authentication.login_form_component import LoginFormComponent
@@ -28,6 +29,7 @@ class LoginPage(BasePage):
         self.register_link.click()
         self.check_current_url(expected_url=re.compile('.*/#/auth/registration'))
 
+    @allure.step('Check visible wrong email or password alert')
     def assert_wrong_creds_alert_visible(self):
         self.wrong_creds_alert.assert_visible()
         self.wrong_creds_alert.assert_have_text(text='Wrong email or password')
