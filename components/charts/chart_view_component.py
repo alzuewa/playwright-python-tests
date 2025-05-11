@@ -1,5 +1,6 @@
 from typing import Literal
 
+import allure
 from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
@@ -22,6 +23,7 @@ class ChartViewComponent(BaseComponent):
         self.chart = Image(page, f'{identifier}-{char_type}-chart', 'Chart')
 
     def assert_visible(self):
-        self.chart.assert_visible(char_type=self.char_type)
-        self.title.assert_visible()
-        self.title.assert_have_text(text=self.chart_name)
+        with allure.step(f'Check chart "{self.chart_name}" is visible'):
+            self.chart.assert_visible(char_type=self.char_type)
+            self.title.assert_visible()
+            self.title.assert_have_text(text=self.chart_name)
