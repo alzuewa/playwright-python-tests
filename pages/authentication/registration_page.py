@@ -22,4 +22,4 @@ class RegistrationPage(BasePage):
 
     def click_login_link(self):
         self.login_link.click()
-        self.check_current_url(expected_url=re.compile('.*/#/auth/login'))
+        self.check_current_url(expected_url=re.compile(r'.*/#/auth/login'))

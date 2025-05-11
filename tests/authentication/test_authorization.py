@@ -76,6 +76,6 @@ class TestAuthorization:
     ):
         login_page.open('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login')
         login_page.click_registration_link()
-        login_page.check_current_url(expected_url=re.compile('.*/#/auth/registration'))
+        login_page.check_current_url(expected_url=re.compile(r'.*/#/auth/registration'))
 
         registration_page.registration_form.assert_visible(email='', username='', password='')
