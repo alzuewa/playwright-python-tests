@@ -7,10 +7,10 @@ from allure_commons.types import Severity
 from pages.authentication.login_page import LoginPage
 from pages.authentication.registration_page import RegistrationPage
 from pages.dashboard.dashboard_page import DashboardPage
-from utils.allure.epics import AllureEpic
-from utils.allure.features import AllureFeature
-from utils.allure.stories import AllureStory
-from utils.allure.tags import AllureTag
+from utils.allure_strings.epics import AllureEpic
+from utils.allure_strings.features import AllureFeature
+from utils.allure_strings.stories import AllureStory
+from utils.allure_strings.tags import AllureTag
 
 
 @pytest.mark.regression
