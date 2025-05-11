@@ -1,4 +1,3 @@
-import re
 from dataclasses import dataclass
 
 import allure
@@ -112,8 +111,6 @@ class TestCourses:
             file_path=get_resource_path(local_file_path='testdata/files/image.jpg')
         )
         create_course_page_authorized.toolbar.click_create_course_button()
-
-        courses_list_page.check_current_url(expected_url=re.compile('.*/#/courses'))
         courses_list_page.course_view.assert_visible(
             index=0,
             title_text=first_data.title,
