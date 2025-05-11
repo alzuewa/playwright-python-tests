@@ -13,7 +13,7 @@ class AllureSuite(StrEnum):
     AUTHENTICATION = 'Authentication'
 
 
-class AllureSubSuite(StrEnum):
+class AllureSbuSuite(StrEnum):
     COURSES = 'Courses'
     DASHBOARD = 'Dashboard'
     REGISTRATION = 'Registration'
