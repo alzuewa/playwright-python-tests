@@ -1,5 +1,6 @@
 import re
 
+import allure
 from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
@@ -15,16 +16,20 @@ class SidebarComponent(BaseComponent):
         self.courses_list_item = SidebarListItemComponent(page=page, identifier='courses')
         self.logout_list_item = SidebarListItemComponent(page=page, identifier='logout')
 
+    @allure.step('Check sidebar is visible')
     def assert_visible(self):
         self.dashboard_list_item.assert_visible(item_title='Dashboard')
         self.courses_list_item.assert_visible(item_title='Courses')
         self.logout_list_item.assert_visible(item_title='Logout')
 
+    @allure.step('Click logout on sidebar')
     def click_logout(self):
         self.logout_list_item.navigate(expected_url=re.compile(r'.*/#/auth/login'))
 
+    @allure.step('Click courses on sidebar')
     def click_courses(self):
         self.courses_list_item.navigate(expected_url=re.compile(r'.*/#/courses'))
 
+    @allure.step('Click dashboard on sidebar')
     def click_dashboard(self):
         self.dashboard_list_item.navigate(expected_url=re.compile(r'.*/#/dashboard'))
