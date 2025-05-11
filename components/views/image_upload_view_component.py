@@ -46,5 +46,5 @@ class ImageUploadViewComponent(BaseComponent):
     def click_remove_image_button(self):
         self.remove_button.click()
 
-    def upload_preview_image(self, file_path: str | Path):
+    def upload_preview_image(self, file_path: Path):
         self.upload_input.set_input_files(file=file_path, )
