@@ -1,3 +1,4 @@
+import allure
 from playwright.sync_api import Locator, expect
 
 from elements.base_element import BaseElement
@@ -8,9 +9,6 @@ class Input(BaseElement):
         return super().get_locator(nth, **kwargs).locator('input')
 
     def fill(self, value: str, nth: int = 0, **kwargs):
-        locator = self.get_locator(nth, **kwargs)
-        locator.fill(value)
-
-    def assert_have_value(self, value: str, nth: int = 0, **kwargs):
-        locator = self.get_locator(nth, **kwargs)
-        expect(locator).to_have_value(value)
+        with allure.step(f'Set to {self.type_of} "{self.name}" value "{value}"'):
+            locator = self.get_locator(nth, **kwargs)
+            locator.fill(value)
