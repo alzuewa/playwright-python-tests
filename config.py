@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     test_user: TestUser
     test_data: TestData
     videos_dir: DirectoryPath
-    tracing_dir: DirectoryPath
+    traces_dir: DirectoryPath
     browser_state_file: FilePath
 
     @classmethod
@@ -49,7 +49,7 @@ class Settings(BaseSettings):
 
         return Settings(
             videos_dir=videos_dir,
-            tracing_dir=traces_dir,
+            traces_dir=traces_dir,
             browser_state_file=browser_state_file
         )
 
