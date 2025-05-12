@@ -8,3 +8,6 @@ __pycache__/
 allure-results/
 traces/
 videos/
+
+
+.env
