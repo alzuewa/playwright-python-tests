@@ -1,5 +1,5 @@
 import allure
-from playwright.sync_api import Locator, expect
+from playwright.sync_api import Locator
 
 from elements.base_element import BaseElement
 

@@ -24,16 +24,16 @@ class BaseElement:
             locator.click()
 
     def assert_visible(self, nth: int = 0, **kwargs):
-        with allure.step(f'Checking that {self.type_of} is visible'):
+        with allure.step(f'Checking that {self.type_of} "{self.name}" is visible'):
             locator = self.get_locator(nth, **kwargs)
             expect(locator).to_be_visible()
 
     def assert_have_text(self, text: str, nth: int = 0, **kwargs):
-        with allure.step(f'Checking that {self.type_of} text is "{text}"'):
+        with allure.step(f'Checking that text of {self.type_of} "{self.name}" is "{text}"'):
             locator = self.get_locator(nth, **kwargs)
             expect(locator).to_have_text(text)
 
     def assert_have_value(self, value: str, nth: int = 0, **kwargs):
-        with allure.step(f'Checking that value of {self.type_of} is "{value}"'):
+        with allure.step(f'Checking that value of {self.type_of} "{self.name}" is "{value}"'):
             locator = self.get_locator(nth, **kwargs)
             expect(locator).to_have_value(value)
