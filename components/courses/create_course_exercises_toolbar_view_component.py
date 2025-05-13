@@ -12,7 +12,9 @@ class CreateCourseExercisesToolbarViewComponent(BaseComponent):
         super().__init__(page=page)
 
         self.title = Text(page, 'create-course-exercises-box-toolbar-title-text', 'Title')
-        self.create_exercise_button = Button(page, 'create-course-exercises-box-toolbar-create-exercise-button', 'Create button')
+        self.create_exercise_button = Button(
+            page, 'create-course-exercises-box-toolbar-create-exercise-button', 'Create button'
+        )
 
     @allure.step('Check course exercise toolbar is visible')
     def assert_visible(self):

@@ -3,6 +3,7 @@ from playwright.sync_api import Locator
 
 from elements.base_element import BaseElement
 
+
 class Input(BaseElement):
 
     def get_locator(self, nth: int = 0, **kwargs) -> Locator:

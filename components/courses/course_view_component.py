@@ -24,7 +24,7 @@ class CourseViewComponent(BaseComponent):
     def assert_visible(self, index: int, title_text: str, max_score: int, min_score: int, estimated_time: str):
         self.image.assert_visible(nth=index)
         self.title.assert_visible(nth=index)
-        self.title.assert_have_text(text = title_text, nth=index)
+        self.title.assert_have_text(text=title_text, nth=index)
         self.max_score_text.assert_visible(nth=index)
         self.max_score_text.assert_have_text(text=f'Max score: {max_score}', nth=index)
         self.min_score_text.assert_visible(nth=index)
