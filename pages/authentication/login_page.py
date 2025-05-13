@@ -28,7 +28,7 @@ class LoginPage(BasePage):
 
     def click_registration_link(self):
         self.register_link.click()
-        self.check_current_url(expected_url=re.compile(fr'.*{AppRoute.REGISTRATION}'))
+        self.check_current_url(expected_url=re.compile(r'.*/#/auth/registration'))
 
     @allure.step('Check visible wrong email or password alert')
     def assert_wrong_creds_alert_visible(self):

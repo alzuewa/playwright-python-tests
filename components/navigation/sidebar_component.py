@@ -25,12 +25,12 @@ class SidebarComponent(BaseComponent):
 
     @allure.step('Click logout on sidebar')
     def click_logout(self):
-        self.logout_list_item.navigate(expected_url=re.compile(fr'.*{AppRoute.LOGIN}'))
+        self.logout_list_item.navigate(expected_url=re.compile(r'.*/#/auth/login'))
 
     @allure.step('Click courses on sidebar')
     def click_courses(self):
-        self.courses_list_item.navigate(expected_url=re.compile(fr'.*{AppRoute.COURSES}'))
+        self.courses_list_item.navigate(expected_url=re.compile(r'.*/#/courses'))
 
     @allure.step('Click dashboard on sidebar')
     def click_dashboard(self):
-        self.dashboard_list_item.navigate(expected_url=re.compile(fr'.*{AppRoute.DASHBOARD}'))
+        self.dashboard_list_item.navigate(expected_url=re.compile(r'.*/#/dashboard'))

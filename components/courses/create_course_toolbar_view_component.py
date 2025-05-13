@@ -29,4 +29,4 @@ class CreateCourseToolbarViewComponent(BaseComponent):
 
     def click_create_course_button(self):
         self.create_course_button.click()
-        self.check_current_url(expected_url=re.compile(fr'.*{AppRoute.COURSES}'))
+        self.check_current_url(expected_url=re.compile(r'.*/#/courses'))
