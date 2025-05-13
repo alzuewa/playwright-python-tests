@@ -8,6 +8,7 @@ from elements.button import Button
 from elements.link import Link
 from elements.text import Text
 from pages.base_page import BasePage
+from utils.routes import AppRoute
 
 
 class LoginPage(BasePage):
@@ -27,7 +28,7 @@ class LoginPage(BasePage):
 
     def click_registration_link(self):
         self.register_link.click()
-        self.check_current_url(expected_url=re.compile(r'.*/#/auth/registration'))
+        self.check_current_url(expected_url=re.compile(fr'.*{AppRoute.REGISTRATION}'))
 
     @allure.step('Check visible wrong email or password alert')
     def assert_wrong_creds_alert_visible(self):

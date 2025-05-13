@@ -5,6 +5,7 @@ from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
 from components.navigation.sidebar_list_item_component import SidebarListItemComponent
+from utils.routes import AppRoute
 
 
 class SidebarComponent(BaseComponent):
@@ -24,12 +25,12 @@ class SidebarComponent(BaseComponent):
 
     @allure.step('Click logout on sidebar')
     def click_logout(self):
-        self.logout_list_item.navigate(expected_url=re.compile(r'.*/#/auth/login'))
+        self.logout_list_item.navigate(expected_url=re.compile(fr'.*{AppRoute.LOGIN}'))
 
     @allure.step('Click courses on sidebar')
     def click_courses(self):
-        self.courses_list_item.navigate(expected_url=re.compile(r'.*/#/courses'))
+        self.courses_list_item.navigate(expected_url=re.compile(fr'.*{AppRoute.COURSES}'))
 
     @allure.step('Click dashboard on sidebar')
     def click_dashboard(self):
-        self.dashboard_list_item.navigate(expected_url=re.compile(r'.*/#/dashboard'))
+        self.dashboard_list_item.navigate(expected_url=re.compile(fr'.*{AppRoute.DASHBOARD}'))

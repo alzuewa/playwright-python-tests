@@ -6,6 +6,7 @@ from components.authentication.registration_form_component import RegistrationFo
 from elements.button import Button
 from elements.link import Link
 from pages.base_page import BasePage
+from utils.routes import AppRoute
 
 
 class RegistrationPage(BasePage):
@@ -22,4 +23,4 @@ class RegistrationPage(BasePage):
 
     def click_login_link(self):
         self.login_link.click()
-        self.check_current_url(expected_url=re.compile(r'.*/#/auth/login'))
+        self.check_current_url(expected_url=re.compile(fr'.*{AppRoute.LOGIN}'))
