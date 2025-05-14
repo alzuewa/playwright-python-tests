@@ -72,6 +72,7 @@ class TestAuthorization:
         login_page.click_login_button()
         login_page.assert_wrong_creds_alert_visible()
 
+    @pytest.mark.xdist_group(name='authorization-group')
     @allure.tag(AllureTag.NAVIGATION)
     @allure.title('Navigation from login page to registration page')
     @allure.severity(Severity.NORMAL)
