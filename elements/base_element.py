@@ -48,11 +48,3 @@ class BaseElement:
             locator = self.get_locator(nth, **kwargs)
             logger.info(step)
             expect(locator).to_have_text(text)
-
-    def assert_have_value(self, value: str, nth: int = 0, **kwargs):
-        step = f'Checking that value of {self.type_of} "{self.name}" is "{value}"'
-
-        with allure.step(step):
-            locator = self.get_locator(nth, **kwargs)
-            logger.info(step)
-            expect(locator).to_have_value(value)
