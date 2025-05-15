@@ -1,13 +1,18 @@
+# pycharmm
 .idea/
+
+# python
 .venv/
-
-browser-state.json
-
 __pycache__/
 
+# allure
 allure-results/
-traces/
-videos/
+allure-report/
 
+# testing artifacts
+*.html
+*.json
+videos/
+traces/
 
 .env
