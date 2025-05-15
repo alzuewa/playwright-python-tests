@@ -4,7 +4,7 @@ from config import settings
 from utils.routes import AppRoute
 
 with sync_playwright() as playwright:
-    chromium = playwright.chromium.launch(headless=False)
+    chromium = playwright.chromium.launch(headless=settings.headless)
     context = chromium.new_context()
     page = context.new_page()
 
