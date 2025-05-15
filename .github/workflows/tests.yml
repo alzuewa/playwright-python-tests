@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps
           
-      - name: Run Playwrigt tests with Pytest and generate Allure results
+      - name: Run Playwright tests with Pytest and generate Allure results
         run: |
           pytest -m regression --numprocesses 2
 
@@ -50,6 +50,6 @@ jobs:
       - name: Deploy report to Github Pages
         uses: peaceiris/actions-gh-pages@v4
         env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
