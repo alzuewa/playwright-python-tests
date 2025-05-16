@@ -59,27 +59,12 @@ jobs:
           name: allure-results
           path: ./allure-results
 
-      - name: check dir
-        run: |
-          ls -la 
-          echo ######
-          pwd 
-          echo ######
-          ls -la ../
-          echo ######
-          ls -la /
-          echo ####
-
       - name: Allure report action
         uses: simple-elf/allure-report-action@v1.12
         if: always()
         with:
           allure_results: allure-results
           allure_history: allure-history
-
-      - name: check dir
-        run: |
-          ls -la
 
       - name: Deploy report to Github Pages
         uses: peaceiris/actions-gh-pages@v4
