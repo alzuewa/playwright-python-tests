@@ -57,10 +57,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-results
+          path: ./allure-results
 
       - name: check dir
         run: |
           ls -la 
+          echo ######
+          pwd 
+          echo ######
+          ls -la ../
           echo ######
           ls -la /
           echo ####
