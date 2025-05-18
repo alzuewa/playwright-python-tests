@@ -34,11 +34,43 @@ jobs:
         run: |
           pytest -m regression --numprocesses 2
 
+      - name: Restore Coverage history
+        uses: actions/cache/restore@v4
+        with:
+          path: coverage-history.json
+          key: coverage-history-${{ github.run_id }}
+          restore-keys: |
+            coverage-history-
+
+      - name: Generate Coverage report
+        run: |
+          ui-coverage-tool save-report
+
+      - name: Cache Coverage  history
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: coverage-history.json
+          key: coverage-history-${{ github.run_id }}
+
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results/
+
+      - name: Upload Coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.html
+
+      - name: Cache Coverage history
+        id: cache-primes
+        uses: actions/cache@v4
+        with:
+          path: coverage-history.json
+          key: coverage-history.json-${{ runner.os }}-primes
 
   publish-report:
     needs: run-tests
@@ -47,8 +79,6 @@ jobs:
     steps:
       - name: Get Allure history
         uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
@@ -59,14 +89,14 @@ jobs:
           name: allure-results
           path: ./allure-results
 
-      - name: Allure report action
+      - name: Generate allure report with history
         uses: simple-elf/allure-report-action@v1.12
         if: always()
         with:
           allure_results: allure-results
           allure_history: allure-history
 
-      - name: Deploy report to Github Pages
+      - name: Deploy Allure report to Github Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
