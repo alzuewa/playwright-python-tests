@@ -40,7 +40,7 @@ class CreateCourseExerciseComponent(BaseComponent):
         self.title.assert_visible(index=index)
         self.title.assert_have_text(text=f'#{index + 1} Exercise', index=index)
 
-        self.subtitle_input.assert_visible()
+        self.subtitle_input.assert_visible(index=index)
         self.subtitle_input.assert_have_value(value=title, index=index)
 
         self.description_input.assert_visible(index=index)
