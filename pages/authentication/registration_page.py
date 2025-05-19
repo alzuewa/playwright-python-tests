@@ -6,7 +6,6 @@ from components.authentication.registration_form_component import RegistrationFo
 from elements.button import Button
 from elements.link import Link
 from pages.base_page import BasePage
-from utils.routes import AppRoute
 
 
 class RegistrationPage(BasePage):

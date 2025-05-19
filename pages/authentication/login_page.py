@@ -8,7 +8,6 @@ from elements.button import Button
 from elements.link import Link
 from elements.text import Text
 from pages.base_page import BasePage
-from utils.routes import AppRoute
 
 
 class LoginPage(BasePage):
