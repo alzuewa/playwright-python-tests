@@ -16,7 +16,7 @@ on [GitHub](https://github.com/Nikita-Filonov/qa-automation-engineer-ui-course).
 >
 > - [View UI-coverage Report](#view-ui-coverage-report)
 >
-> - [See the Report on GitHub Pages](#obtain-reports-on-github-pages)
+> - [See the Report on GitHub Pages](#see-the-report-on-github-pages)
 
 
 ### Project Overview
@@ -101,7 +101,7 @@ Both `videos` and `traces` are linked to each test in the Allure Report and can 
 
 ### View Allure Report
 
-If Allure Report is [installed](https://allurereport.org/docs/install/) on your computer, you can view it locally. To do so, run:
+If Allure Report is [installed](https://allurereport.org/docs/install/) on your computer, you can view it after [running tests locally](#run-tests-locally). To do so, run:
 
 ```bash
 allure serve allure-results
@@ -114,9 +114,9 @@ This command will open the Allure Report in your default web browser.
 
 ### View UI-coverage Report
 
-This project uses `ui-coverage-tool` [library](https://github.com/Nikita-Filonov/ui-coverage-tool) which gathers information about tests actions with elements in user interface and can present the results as a UI coverage report.
+This project uses `ui-coverage-tool` [library](https://github.com/Nikita-Filonov/ui-coverage-tool) which gathers information about tests actions with elements in user interface and present the results as a UI coverage report.
 
-After running the tests, `coverage-results` directory was created. To get a report on UI coverage, run:
+After [running tests locally](#run-tests-locally), `coverage-results` directory was created. To get a report on UI coverage, run:
 ```bash
 ui-coverage-tool save-report
 ```
@@ -126,24 +126,11 @@ Open `coverage.html`:
 - See the graphs on total elements and its properties covered.
 - Interact with a real app inside the frame and look at the labels on elements indicating the number of interactions done during tests run.
 
-<style>
-  .container {
-        display: flex;
-  }
-</style>
-
-<style>
-  .image {
-        margin: 5px;
-        width: 50%;
-  }
-</style>
-
-<div class="container">
-    <div class="image">
+<div style="display: flex;">
+    <div style="margin: 5px; width: 50%;">
         <img title="UI coverage history" src="media/ui_coverage_history.png">
     </div>
-    <div class="image">
+    <div style="margin: 5px; width: 50%;">
         <img title="UI coverage" src="media/coverage_labels.png">
     </div>
 </div>
