@@ -5,7 +5,8 @@ from config import settings
 
 
 def create_allure_environment_file():
-    items = [f'{key}={value}' for key, value in settings.model_dump().items()]
+    report_props = 'app_url', 'allure_results_dir', 'browser_state_file'
+    items = [f'{key}={value}' for key, value in settings.model_dump().items() if key in report_props]
     items.append(f'os_info={platform.system()}, {platform.release()}')
     items.append(f'python_version={sys.version}')
 
