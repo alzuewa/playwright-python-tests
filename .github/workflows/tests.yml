@@ -3,6 +3,9 @@ name: UI tests
 on:
   workflow_dispatch:
 
+  schedule:
+    - cron: '5 0 * * 2,4,6'
+
   push:
     branches:
       - main
