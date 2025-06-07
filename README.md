@@ -25,7 +25,7 @@ The goal of this project is to automate the testing of the UI Course application
 for organizing test code with clear, maintainable scripts. 
 
 > [!TIP]  
-> **GitHub Actions** are used to run tests, generate reports and publish the [results](https://alzuewa.github.io/playwright_python_tests).
+> **GitHub Actions** are used to run tests, generate reports and publish the [results](https://alzuewa.github.io/playwright-python-tests).
 > 
 > [See below](#run-tests-locally) how to run them locally.
 >
@@ -138,5 +138,5 @@ Open `coverage.html`:
 
 ### See the Report on GitHub Pages
 > [!NOTE]  
-> You can get Allure Report on the project tests run from **GitHub Pages** [here](https://alzuewa.github.io/playwright_python_tests).
+> You can get Allure Report on the project tests run from **GitHub Pages** [here](https://alzuewa.github.io/playwright-python-tests).
 >
