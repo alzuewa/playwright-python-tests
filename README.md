@@ -46,13 +46,13 @@ for organizing test code with clear, maintainable scripts.
 1. Clone the repository
 
 ```bash
-git clone https://github.com/alzuewa/playwright_python_test_project.git
+git clone https://github.com/alzuewa/playwright-python-tests.git
 ```
 
 2. `cd` to the project's directory
 
 ```bash
-cd playwright_python_test_project
+cd playwright-python-tests
 ```
 3. In project root create virtual environment
 
