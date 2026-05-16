@@ -1,0 +1,21 @@
+INFO     BASE_PAGE:base_page.py:19 Opening the url "./#/auth/login"
+INFO     BASE_ELEMENT:base_element.py:27 Getting locator with data-testid="login-page-registration-link" at index "0"
+INFO     BASE_ELEMENT:base_element.py:45 Clicking Link "Registration"
+INFO     BASE_PAGE:base_page.py:33 Checking that current url matches pattern ".*/#/auth/registration"
+INFO     BASE_PAGE:base_page.py:33 Checking that current url matches pattern ".*/#/auth/registration"
+INFO     BASE_ELEMENT:base_element.py:27 Getting locator with data-testid="registration-form-email-input" at index "0"
+INFO     BASE_ELEMENT:base_element.py:55 Checking that Input "Email" is visible
+INFO     BASE_ELEMENT:base_element.py:27 Getting locator with data-testid="registration-form-email-input" at index "0"
+INFO     INPUT:input.py:34 Checking that value of Input "Email" is ""
+INFO     BASE_ELEMENT:base_element.py:27 Getting locator with data-testid="registration-form-username-input" at index "0"
+INFO     BASE_ELEMENT:base_element.py:55 Checking that Input "Username" is visible
+INFO     BASE_ELEMENT:base_element.py:27 Getting locator with data-testid="registration-form-username-input" at index "0"
+INFO     INPUT:input.py:34 Checking that value of Input "Username" is ""
+INFO     BASE_ELEMENT:base_element.py:27 Getting locator with data-testid="registration-form-password-input" at index "0"
+INFO     BASE_ELEMENT:base_element.py:55 Checking that Input "Password" is visible
+INFO     BASE_ELEMENT:base_element.py:27 Getting locator with data-testid="registration-form-password-input" at index "0"
+INFO     INPUT:input.py:34 Checking that value of Input "Password" is ""
+ERROR    asyncio:base_events.py:1890 Task was destroyed but it is pending!
+task: <Task pending name='Task-11' coro=<Page._on_route() running at /opt/hostedtoolcache/Python/3.13.13/x64/lib/python3.13/site-packages/playwright/_impl/_page.py:298> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[Connection.dispatch.<locals>._done_callback() at /opt/hostedtoolcache/Python/3.13.13/x64/lib/python3.13/site-packages/playwright/_impl/_connection.py:438]>
+ERROR    asyncio:base_events.py:1890 Task was destroyed but it is pending!
+task: <Task pending name='Task-32' coro=<Page._on_route() running at /opt/hostedtoolcache/Python/3.13.13/x64/lib/python3.13/site-packages/playwright/_impl/_page.py:298> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[Connection.dispatch.<locals>._done_callback() at /opt/hostedtoolcache/Python/3.13.13/x64/lib/python3.13/site-packages/playwright/_impl/_connection.py:438]>
