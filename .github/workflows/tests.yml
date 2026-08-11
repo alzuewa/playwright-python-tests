@@ -20,10 +20,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.13'
 
@@ -38,7 +38,7 @@ jobs:
           pytest -m regression --numprocesses 2
 
       - name: Restore Coverage history
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: coverage-history.json
           key: coverage-history-${{ github.run_id }}
@@ -51,19 +51,19 @@ jobs:
 
       - name: Cache Coverage  history
         if: always()
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         with:
           path: coverage-history.json
           key: coverage-history-${{ github.run_id }}
 
       - name: Upload Allure results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: allure-results
           path: allure-results/
 
       - name: Upload Coverage report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-report
           path: coverage.html
@@ -74,19 +74,19 @@ jobs:
 
     steps:
       - name: Get Allure history
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: gh-pages
           path: gh-pages
 
       - name: Download Allure results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: allure-results
           path: ./allure-results
 
       - name: Generate allure report with history
-        uses: simple-elf/allure-report-action@v1.13
+        uses: simple-elf/allure-report-action@v1.15
         if: always()
         with:
           allure_results: allure-results
